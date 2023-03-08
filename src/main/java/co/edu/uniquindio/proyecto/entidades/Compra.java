@@ -1,12 +1,10 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -19,11 +17,12 @@ public class Compra implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
-    private Date fecha_compra;
-    private String metodo_pago; //Revisar (puede ser una tabla aparte de tipo enun)
-    private Double total_pago;
+    private LocalDate fechaCompra;
+    private MetodoPago metodoPago;
+    private Double totalPago;
+
 
 }

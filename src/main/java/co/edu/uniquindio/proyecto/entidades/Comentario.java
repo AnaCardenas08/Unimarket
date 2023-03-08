@@ -1,11 +1,10 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -17,8 +16,13 @@ import java.io.Serializable;
 public class Comentario implements Serializable
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
+    private Integer codigo;
+
+    @Column(length = 150)
+    private String descripcion;
+    private LocalDate fecha;
+
 
 }

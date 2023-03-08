@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 
@@ -14,11 +12,11 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Producto_Favorito implements Serializable
+public class ProductoFavorito implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
 }

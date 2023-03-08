@@ -1,9 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 import java.io.Serializable;
@@ -19,8 +17,8 @@ public class Moderador implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
     @Column(nullable = false)
     private String nombre;

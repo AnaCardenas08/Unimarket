@@ -1,16 +1,13 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Positive;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
-import org.apache.coyote.http11.filters.SavedRequestInputFilter;
-
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -23,18 +20,25 @@ public class Producto implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer codigo;
 
     @Column(nullable = false)
     private String descripcion;
     @Column(nullable = false)
     private String nombre;
     @Column(nullable = false)
-    private Double precio;
     @PositiveOrZero
+    private Double precio;
     private String disponibilidad;
-    private Date fecha_limite;
+    private LocalDate fechaLimite;
+
+    @OneToMany(mappedBy = "producto")
+    private List<Imagen> imagen;
+
+    @ElementCollection
+    private List<Categoria> categorias;
+
 
 
 }
