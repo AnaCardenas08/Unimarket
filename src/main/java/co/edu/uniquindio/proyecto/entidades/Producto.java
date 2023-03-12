@@ -36,8 +36,31 @@ public class Producto implements Serializable
     @OneToMany(mappedBy = "producto")
     private List<Imagen> imagen;
 
-    @ElementCollection
-    private List<Categoria> categorias;
+    @OneToMany(mappedBy = "producto")
+    private List<Foro> foro;
+
+    @OneToMany(mappedBy = "producto")
+    private List<Calificacion> calificacion;
+
+    @OneToMany(mappedBy = "producto")
+    private List<ProductoFavorito> productoFavorito;
+
+    @OneToMany(mappedBy = "producto")
+    private List<Comentario> comentario;
+
+    @ManyToOne
+    private Usuario usuario;
+    @ManyToOne
+    private Moderador moderador;
+
+    @ManyToMany(mappedBy = "producto")
+    private List<CarritoCompra> carritoCompra;
+
+    @ManyToMany(mappedBy = "producto")
+    private List<Compra> compra;
+
+    @ElementCollection  //Se pone para aquellas listas que no sean @Entity
+    private List<Categoria> categorias; //Pregunta, al ser enum la relacion de ManyToMany???
 
 
 

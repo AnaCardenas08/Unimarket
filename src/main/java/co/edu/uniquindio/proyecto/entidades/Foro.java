@@ -21,4 +21,9 @@ public class Foro implements Serializable
 
     private String comentarios;
 
+    @ManyToOne
+    private Producto producto;
+    @ManyToOne
+    private Usuario usuario;
+
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,8 +22,13 @@ public class Compra implements Serializable
     private Integer codigo;
 
     private LocalDate fechaCompra;
-    private MetodoPago metodoPago;
     private Double totalPago;
+
+    @ManyToMany
+    private List<Producto> producto;
+
+    @ElementCollection
+    private List<MetodoPago> metodoPago; //Pregunta, al ser enum la relacion con compra de ManyToOne??
 
 
 }

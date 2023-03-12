@@ -1,29 +1,30 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import java.io.Serializable;
 
-@Entity
+@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString
-public class Calificacion implements Serializable
+
+public class Persona implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
-    private String calificacion;
-
-    @ManyToOne
-    private Producto producto;
-    @ManyToOne
-    private Usuario usuario;
-
+    @Column(nullable = false, length = 20)
+    private String nombre;
+    @Email
+    private String email;
+    @Column(nullable = false, unique = true)
+    private String password;
 
 }

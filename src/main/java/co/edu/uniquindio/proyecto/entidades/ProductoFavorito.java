@@ -19,4 +19,9 @@ public class ProductoFavorito implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
+
+    @ManyToOne
+    private Producto producto;
+    @ManyToOne
+    private Usuario usuario;
 }

@@ -1,35 +1,41 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Usuario implements Serializable
+public class Usuario extends Persona implements Serializable
 {
-    @Id
-    @EqualsAndHashCode.Include
-    @Column(length = 10)
-    private String codigo;
 
-    @Column(nullable = false)
-    private String nombre;
-    @Email
-    private String email;
-    @Column(unique = true, nullable = true)
-    private String password;
     private String telefono;
     private String direccion;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Producto> producto;
+
+    @OneToMany(mappedBy ="usuario")
+    private List<Foro> foro;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Calificacion> calificacion;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<ProductoFavorito> productoFavorito;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Comentario> comentario;
+
+
 
 
 }

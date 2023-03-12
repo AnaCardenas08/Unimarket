@@ -24,5 +24,9 @@ public class Comentario implements Serializable
     private String descripcion;
     private LocalDate fecha;
 
+    @ManyToOne
+    private Producto producto;
+    @ManyToOne
+    private Usuario usuario;
 
 }

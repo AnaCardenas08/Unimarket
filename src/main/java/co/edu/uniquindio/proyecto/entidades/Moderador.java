@@ -2,30 +2,21 @@ package co.edu.uniquindio.proyecto.entidades;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Moderador implements Serializable
+public class Moderador extends Persona implements Serializable
 {
-    @Id
-    @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer codigo;
 
-    @Column(nullable = false)
-    private String nombre;
-    @Email
-    private String email;
-    @Column(nullable = false, unique = true)
-    private String password;
+    @OneToMany(mappedBy = "moderador")
+    private List<Producto> producto;
 
 
 }
