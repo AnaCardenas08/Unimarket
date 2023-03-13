@@ -24,11 +24,14 @@ public class Compra implements Serializable
     private LocalDate fechaCompra;
     private Double totalPago;
 
-    @ManyToMany
-    private List<Producto> producto;
+    @ManyToOne
+    private Usuario usuario;
 
-    @ElementCollection
-    private List<MetodoPago> metodoPago; //Pregunta, al ser enum la relacion con compra de ManyToOne??
+    private MetodoPago metodoPago;
+
+    @OneToMany(mappedBy = "compra")
+    private List<CompraProducto> compraProducto;
+
 
 
 }

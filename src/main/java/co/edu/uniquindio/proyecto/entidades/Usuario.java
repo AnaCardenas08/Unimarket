@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto.entidades;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 import java.io.Serializable;
@@ -29,12 +30,14 @@ public class Usuario extends Persona implements Serializable
     @OneToMany(mappedBy = "usuario")
     private List<Calificacion> calificacion;
 
-    @OneToMany(mappedBy = "usuario")
-    private List<ProductoFavorito> productoFavorito;
+    @ManyToMany
+    private List<Producto> productoFavorito;
 
     @OneToMany(mappedBy = "usuario")
     private List<Comentario> comentario;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<Compra> compras;
 
 
 

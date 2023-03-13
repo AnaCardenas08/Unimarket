@@ -25,16 +25,21 @@ public class Producto implements Serializable
 
     @Column(nullable = false)
     private String descripcion;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 30)
     private String nombre;
     @Column(nullable = false)
     @PositiveOrZero
     private Double precio;
-    private String disponibilidad;
+
+    private Disponibilidad disponibilidad;
+
+    @Column(nullable = false)
+    private int unidades;
+
     private LocalDate fechaLimite;
 
-    @OneToMany(mappedBy = "producto")
-    private List<Imagen> imagen;
+    @ElementCollection
+    private List<String> imagen;
 
     @OneToMany(mappedBy = "producto")
     private List<Foro> foro;
@@ -42,8 +47,8 @@ public class Producto implements Serializable
     @OneToMany(mappedBy = "producto")
     private List<Calificacion> calificacion;
 
-    @OneToMany(mappedBy = "producto")
-    private List<ProductoFavorito> productoFavorito;
+    @ManyToMany(mappedBy = "productoFavorito")
+    private List<Usuario> usuariosFavorito;
 
     @OneToMany(mappedBy = "producto")
     private List<Comentario> comentario;
@@ -53,15 +58,10 @@ public class Producto implements Serializable
     @ManyToOne
     private Moderador moderador;
 
-    @ManyToMany(mappedBy = "producto")
-    private List<CarritoCompra> carritoCompra;
-
-    @ManyToMany(mappedBy = "producto")
-    private List<Compra> compra;
-
     @ElementCollection  //Se pone para aquellas listas que no sean @Entity
-    private List<Categoria> categorias; //Pregunta, al ser enum la relacion de ManyToMany???
+    private List<Categoria> categorias;
 
-
+    @OneToMany(mappedBy = "producto")
+    private List<CompraProducto> compraProducto;
 
 }

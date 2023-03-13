@@ -1,8 +1,9 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-
 import jakarta.persistence.*;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
+
 import java.io.Serializable;
 
 @Entity
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class ProductoFavorito implements Serializable
+public class CompraProducto implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
@@ -20,8 +21,18 @@ public class ProductoFavorito implements Serializable
     private Integer codigo;
 
 
+    @Column(nullable = false)
+    @PositiveOrZero
+    private double precio;
+
+    @Column(nullable = false)
+    private int unidades;
+
     @ManyToOne
     private Producto producto;
+
     @ManyToOne
-    private Usuario usuario;
+    private Compra compra;
+
+
 }
