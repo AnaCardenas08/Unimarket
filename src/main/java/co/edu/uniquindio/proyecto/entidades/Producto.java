@@ -41,15 +41,18 @@ public class Producto implements Serializable
     @ElementCollection
     private List<String> imagen;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "producto")
     private List<Foro> foro;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "producto")
     private List<Calificacion> calificacion;
 
     @ManyToMany(mappedBy = "productoFavorito")
     private List<Usuario> usuariosFavorito;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "producto")
     private List<Comentario> comentario;
 
@@ -61,6 +64,7 @@ public class Producto implements Serializable
     @ElementCollection  //Se pone para aquellas listas que no sean @Entity
     private List<Categoria> categorias;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "producto")
     private List<CompraProducto> compraProducto;
 

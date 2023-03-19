@@ -15,6 +15,7 @@ import java.util.List;
 public class Moderador extends Persona implements Serializable
 {
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "moderador")
     private List<Producto> producto;
 
