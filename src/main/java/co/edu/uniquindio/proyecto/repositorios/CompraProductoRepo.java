@@ -1,6 +1,11 @@
 package co.edu.uniquindio.proyecto.repositorios;
 
-public interface CompraProductoRepo
+import co.edu.uniquindio.proyecto.entidades.CompraProducto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CompraProductoRepo extends JpaRepository<CompraProducto, Integer>
 {
 
 }
