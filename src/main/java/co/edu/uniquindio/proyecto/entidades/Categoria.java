@@ -3,7 +3,8 @@ package co.edu.uniquindio.proyecto.entidades;
 public enum Categoria
 {
     TECNOLOGIA,
-    ELECTRODOMESTICOS,
-    VEHICULOS,
-    ROPA
+    BELLEZA,
+    HOGAR,
+    ROPA,
+    DEPORTE
 }

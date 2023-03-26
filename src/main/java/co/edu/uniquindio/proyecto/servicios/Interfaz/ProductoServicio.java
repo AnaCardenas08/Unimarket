@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto.servicios;
+package co.edu.uniquindio.proyecto.servicios.Interfaz;
 
 import co.edu.uniquindio.proyecto.dto.ProductoDTO;
 import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
