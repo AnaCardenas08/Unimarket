@@ -9,28 +9,28 @@ import java.util.List;
 
 public interface ProductoServicio
 {
-    int crearProducto(ProductoDTO productoDTO);
+    int crearProducto(ProductoDTO productoDTO)  throws Exception;
 
-    int actualizarProducto(int codigoProducto, ProductoDTO productoDTO);
+    int actualizarProducto(int codigoProducto, ProductoDTO productoDTO) throws Exception;
 
-    int actualizarUnidades(int codigoProducto, int unidades);
+    int actualizarUnidades(int codigoProducto, int unidades) throws Exception;
 
-    int actualizarEstado(int codigoProducto, Disponibilidad disponibilidad);
+    int actualizarEstado(int codigoProducto, Disponibilidad disponibilidad) throws Exception;
 
-    int eliminarProducto(int codigoProducto);
+    int eliminarProducto(int codigoProducto) throws Exception;
 
-    ProductoGetDTO obtenerProducto(int codigoProducto);
+    ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception;
 
-    List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario);
+    List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario) throws Exception;
 
-    List<ProductoGetDTO> listarProductosCategoria(Categoria categoria);
+    List<ProductoGetDTO> listarProductosCategoria(Categoria categoria) throws Exception;
 
-    List<ProductoGetDTO> listarProductosPorEstado(Disponibilidad disponibilidad);
+    List<ProductoGetDTO> listarProductosPorEstado(Disponibilidad disponibilidad) throws Exception;
 
-    List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario);
+    List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario) throws Exception;
 
-    List<ProductoGetDTO> listarProductosNombre(String nombre);
+    List<ProductoGetDTO> listarProductosNombre(String nombre) throws Exception;
 
-    List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo);
+    List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo) throws Exception;
 
 }
