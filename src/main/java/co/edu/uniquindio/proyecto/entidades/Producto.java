@@ -31,6 +31,7 @@ public class Producto implements Serializable
     @PositiveOrZero
     private Double precio;
 
+    @Enumerated(EnumType.STRING)
     private Disponibilidad disponibilidad;
 
     @Column(nullable = false)
@@ -62,6 +63,7 @@ public class Producto implements Serializable
     private Moderador moderador;
 
     @ElementCollection  //Se pone para aquellas listas que no sean @Entity
+    @Enumerated(EnumType.STRING)
     private List<Categoria> categorias;
 
     @ToString.Exclude

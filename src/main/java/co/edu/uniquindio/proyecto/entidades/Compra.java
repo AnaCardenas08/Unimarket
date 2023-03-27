@@ -27,6 +27,7 @@ public class Compra implements Serializable
     @ManyToOne
     private Usuario usuario;
 
+    @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;
 
     @ToString.Exclude

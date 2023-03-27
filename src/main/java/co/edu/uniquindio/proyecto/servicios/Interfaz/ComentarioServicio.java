@@ -12,4 +12,6 @@ public interface ComentarioServicio
 
     List<ComentarioGetDTO> listarComentarios(int codigoProducto);
 
+
 }
+

@@ -24,10 +24,10 @@ public class Persona implements Serializable
     private String nombre;
 
     @Email
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 100)
     private String email;
 
-    @Column(nullable = false, unique = true, length = 20)
+    @Column(nullable = false, unique = true, length = 100)
     private String password;
 
 }
