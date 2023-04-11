@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyecto.dto.ProductoDTO;
 import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
 import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Disponibilidad;
+import co.edu.uniquindio.proyecto.entidades.Producto;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public interface ProductoServicio
 
     int eliminarProducto(int codigoProducto) throws Exception;
 
+    Producto obtener(int codigo) throws Exception;
+
     ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception;
 
     List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario) throws Exception;
@@ -29,8 +32,11 @@ public interface ProductoServicio
 
     List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario) throws Exception;
 
-    List<ProductoGetDTO> listarProductosNombre(String nombre) throws Exception;
+    List<ProductoGetDTO> listarProductosNombre(String nombre, Categoria categoria) throws Exception;
 
     List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo) throws Exception;
+
+    void crearFavorito(int codigoUsuario, int codigoProducto)throws Exception;
+    void eliminarFavorito(int codigoUsuario, int codigoProducto)throws Exception;
 
 }
