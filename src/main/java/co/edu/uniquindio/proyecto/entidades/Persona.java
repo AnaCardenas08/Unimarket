@@ -20,10 +20,10 @@ public class Persona implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100) //que el campo sea obligatorio y limitando su tamaño a 100 (solo funciona para strings)
     private String nombre;
 
-    @Email
+    @Email //valida que sea un correo
     @Column(nullable = false, length = 100)
     private String email;
 

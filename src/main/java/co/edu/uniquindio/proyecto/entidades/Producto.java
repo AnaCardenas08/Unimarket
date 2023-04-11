@@ -14,12 +14,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true) //para poder utilizarlo en la llave primaria
 @ToString
 public class Producto implements Serializable
 {
     @Id
-    @EqualsAndHashCode.Include
+    @EqualsAndHashCode.Include //lo hace puntualmente en la llave primaria con el .Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
@@ -31,7 +31,8 @@ public class Producto implements Serializable
     @PositiveOrZero
     private Double precio;
 
-    @Enumerated(EnumType.STRING)
+
+    @Enumerated(EnumType.STRING) // tomar la enumeración como un string y no como un entero
     private Disponibilidad disponibilidad;
 
     @Column(nullable = false)

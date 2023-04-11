@@ -33,7 +33,7 @@ public class Usuario extends Persona implements Serializable
     @OneToMany(mappedBy = "usuario")
     private List<Calificacion> calificacion;
 
-    @ManyToMany
+    @ManyToMany //entidad propietaria
     private List<Producto> productoFavorito;
 
     @ToString.Exclude
