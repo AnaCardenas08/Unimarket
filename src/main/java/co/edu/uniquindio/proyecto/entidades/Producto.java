@@ -6,6 +6,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -25,11 +26,13 @@ public class Producto implements Serializable
 
     @Column(nullable = false)
     private String descripcion;
+
     @Column(nullable = false, length = 30)
     private String nombre;
+
     @Column(nullable = false)
     @PositiveOrZero
-    private Double precio;
+    private float precio;
 
 
     @Enumerated(EnumType.STRING) // tomar la enumeración como un string y no como un entero
@@ -38,10 +41,11 @@ public class Producto implements Serializable
     @Column(nullable = false)
     private int unidades;
 
-    private LocalDate fechaLimite;
+    private LocalDateTime fechaLimite;
 
-    @ElementCollection
-    private List<String> imagen;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "producto")
+    private List<Imagen> imagen;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "producto")

@@ -4,6 +4,6 @@ import co.edu.uniquindio.proyecto.dto.EmailDTO;
 
 public interface EmailServicio
 {
-    String enviarEmail(EmailDTO emailDTO);
+    boolean enviarEmail(String asunto, String contenido, String destinatario) throws Exception;
 
 }

@@ -34,15 +34,16 @@ insert into producto_categorias values (5, 'DEPORTE');
 insert into producto_categorias values (6, 'HOGAR');
 insert into producto_categorias values (7, 'TECNOLOGIA');
 
-/* ----------------------------------------------PRODUCTO_IMAGEN---------------------------------------------------------------------------------------------------------------------------------------------*/
-/* PRODUCTO_IMAGEN: CODIGO(PK), IMAGEN */
-insert into producto_imagen values (1, "Link Imagen");
-insert into producto_imagen values (2, "Link Imagen");
-insert into producto_imagen values (3, "Link Imagen");
-insert into producto_imagen values (4, "Link Imagen");
-insert into producto_imagen values (5, "Link Imagen");
-insert into producto_imagen values (6, "Link Imagen");
-insert into producto_imagen values (7, "Link Imagen");
+/* ----------------------------------------------IMAGEN---------------------------------------------------------------------------------------------------------------------------------------------*/
+/* IMAGEN: CODIGO(PK), IMAGEN */
+insert into imagen values (1, "Link Imagen", 1);
+insert into imagen values (2, "Link Imagen", 1);
+insert into imagen values (3, "Link Imagen", 2);
+insert into imagen values (4, "Link Imagen", 3);
+insert into imagen values (5, "Link Imagen", 4);
+insert into imagen values (6, "Link Imagen", 5);
+insert into imagen values (7, "Link Imagen", 6);
+insert into imagen values (8, "Link Imagen", 7);
 
 /* ----------------------------------------------USUARIO_PRODUCTO_FAVORITO----------------------------------------------------------------------------------------------------------------------------------*/
 /* USUARIO_PRODUCTO_FAVORITO: USUARIO_FAVORITO_CODIGO, PRODUCTO_FAVORITO_CODIGO*/

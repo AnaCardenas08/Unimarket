@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyecto.dto.UsuarioDTO;
 import co.edu.uniquindio.proyecto.dto.UsuarioGetDTO;
 import co.edu.uniquindio.proyecto.entidades.Usuario;
 import co.edu.uniquindio.proyecto.repositorios.UsuarioRepo;
+import co.edu.uniquindio.proyecto.servicios.Interfaz.EmailServicio;
 import co.edu.uniquindio.proyecto.servicios.Interfaz.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class UsuarioServicioImpl implements UsuarioServicio
 {
     private final UsuarioRepo usuarioRepo;
+    private EmailServicio emailServicio;
 
     @Override
     public int crearUsuario(UsuarioDTO usuarioDTO) throws Exception
@@ -35,9 +37,12 @@ public class UsuarioServicioImpl implements UsuarioServicio
     public int actualizarUsuario(int codigoUsuario, UsuarioDTO usuarioDTO) throws Exception
     {
 
-        /**
-         * TODO Validar que el correo no se repita
-         */
+        Usuario buscado = usuarioRepo.buscarUsuario(usuarioDTO.getEmail());
+
+        if(buscado!=null)
+        {
+            throw new Exception("El correo "+usuarioDTO.getEmail()+" ya está en uso");
+        }
 
         validarExiste(codigoUsuario);
 
@@ -61,17 +66,42 @@ public class UsuarioServicioImpl implements UsuarioServicio
         return convertir( obtener(codigoUsuario) );
     }
 
-    private Usuario obtener(int codigoUsuario) throws Exception
+    public Usuario obtener(int codigoUsuario) throws Exception
     {
         Optional<Usuario> usuario = usuarioRepo.findById(codigoUsuario);
 
-        if(usuario.isEmpty() ){
+        if(usuario.isEmpty() )
+        {
 
             throw new Exception("El código "+codigoUsuario+" no está asociado a ningún usuario");
         }
 
         return usuario.get();
     }
+
+    public void enviarLinkRecuperacion(String correo) throws Exception {
+        emailServicio.enviarEmail("Recuperacion password", "Para recupear la contraseña ingrese a: []", correo);
+    }
+
+    @Override
+
+    public boolean cambiarPassword(String correo, String passwordNueva ) throws Exception
+    {
+
+        Usuario usuario = usuarioRepo.findByEmail(correo).orElse(null);
+        enviarLinkRecuperacion(correo);
+
+        if(usuario==null)
+        {
+            throw new Exception("El cliente no se encontro con el correo ingresado");
+        }
+
+        usuario.setPassword(passwordNueva);
+        usuarioRepo.save(usuario);
+
+        return true;
+    }
+
 
     private void validarExiste(int codigoUsuario) throws Exception
     {
@@ -106,5 +136,6 @@ public class UsuarioServicioImpl implements UsuarioServicio
 
         return usuario;
     }
+
 }
  

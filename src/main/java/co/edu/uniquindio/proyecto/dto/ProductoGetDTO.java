@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto.dto;
 
 import co.edu.uniquindio.proyecto.entidades.Categoria;
+import co.edu.uniquindio.proyecto.entidades.Disponibilidad;
+import co.edu.uniquindio.proyecto.entidades.Imagen;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +17,7 @@ public class ProductoGetDTO
 {
     private int codigo;
 
-    private boolean estado;
+    private Disponibilidad disponibilidad;
 
     private LocalDateTime fechaLimite;
 
@@ -27,9 +29,9 @@ public class ProductoGetDTO
 
     private double precio;
 
-    private int codigoVendedor;
+    private int codigoUsuario;
 
-    private List<String> imagenes;
+    private List<Imagen> imagenes;
 
     private List<Categoria> categorias;
 

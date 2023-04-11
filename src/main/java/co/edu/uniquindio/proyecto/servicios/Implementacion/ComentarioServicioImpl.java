@@ -5,7 +5,6 @@ import co.edu.uniquindio.proyecto.dto.ComentarioGetDTO;
 import co.edu.uniquindio.proyecto.repositorios.ComentarioRepo;
 import co.edu.uniquindio.proyecto.servicios.Interfaz.ComentarioServicio;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

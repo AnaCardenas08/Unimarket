@@ -6,6 +6,7 @@ import co.edu.uniquindio.proyecto.servicios.Interfaz.UsuarioServicio;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest
 public class UsuarioTest
@@ -14,6 +15,7 @@ public class UsuarioTest
     private UsuarioServicio usuarioServicio;
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void crearUsuarioTest()
     {
 
@@ -27,6 +29,7 @@ public class UsuarioTest
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void eliminarUsuarioTest()
     {
         try {
@@ -39,6 +42,7 @@ public class UsuarioTest
 
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void actualizarUsuarioTest()
     {
         try {
@@ -51,6 +55,7 @@ public class UsuarioTest
     }
 
     @Test
+    @Sql("classpath:dataset.sql")
     public void obtenerUsuarioTest()
     {
         try {
