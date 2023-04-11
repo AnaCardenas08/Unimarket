@@ -3,3 +3,6 @@
 /.metadata/
 /tmp/
 /.project/
+/.gradle/
+/build/
+
