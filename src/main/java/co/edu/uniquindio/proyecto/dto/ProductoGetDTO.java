@@ -27,7 +27,7 @@ public class ProductoGetDTO
 
     private int unidades;
 
-    private double precio;
+    private float precio;
 
     private int codigoUsuario;
 

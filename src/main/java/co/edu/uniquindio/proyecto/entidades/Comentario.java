@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,11 +23,14 @@ public class Comentario implements Serializable
 
     @Column(length = 150)
     private String descripcion;
-    private LocalDate fecha;
 
+    private LocalDate fecha;
     @ManyToOne
     private Producto producto;
     @ManyToOne
     private Usuario usuario;
+
+    @Enumerated(EnumType.STRING)
+    private Calificacion calificacion;
 
 }

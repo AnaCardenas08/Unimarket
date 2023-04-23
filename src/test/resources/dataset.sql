@@ -1,18 +1,18 @@
 /* ----------------------------------------------USUARIO--------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* USUARIO: CODIGO(PK), CORREO, NOMBRE, PASSWORD, DIRECCION, TELEFONO */
-insert into usuario values (1, "juanperez@gmail.com", "Juan Perez", "000", "Cr 10 #25-30, Bogota", "3001234567");
-insert into usuario values (2, "lgomez@hotmail.com", "Laura Gomez", "001", "Cll 30 #8-23, Medellin", "3102345678");
-insert into usuario values (3, "cramirez@yahoo.com", "Carlos Ramirez", "002", "Av 4 #18-15, Cali", "3013456789");
-insert into usuario values (4, "dcastro@gmail.com", "Diana Castro", "003", "Cr 8 #16-45, Barranquilla", "3204567890");
-insert into usuario values (5, "amorales@outlook.com", "Andres Morales", "004", "Cll 12 #9-60, Bucaramanga", "3155678901");
+insert into usuario values (1, "juanperez@gmail.com", "Juan Perez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a", "Cr 10 #25-30, Bogota", "3001234567");
+insert into usuario values (2, "lgomez@hotmail.com", "Laura Gomez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a", "Cll 30 #8-23, Medellin", "3102345678");
+insert into usuario values (3, "cramirez@yahoo.com", "Carlos Ramirez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a", "Av 4 #18-15, Cali", "3013456789");
+insert into usuario values (4, "dcastro@gmail.com", "Diana Castro", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a", "Cr 8 #16-45, Barranquilla", "3204567890");
+insert into usuario values (5, "amorales@outlook.com", "Andres Morales", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a", "Cll 12 #9-60, Bucaramanga", "3155678901");
 
 /* ----------------------------------------------MODERADOR---------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* MODERADOR: CODIGO(PK), CORREO, NOMBRE, PASSWORD */
-insert into moderador values (1, "martalopez@hotmail.com", "Marta Lopez", "00");
-insert into moderador values (2, "alejandro.gutierrez@gmail.com", "Alejandro Guiterrez", "01");
-insert into moderador values (3, "anamaria.rodriguez@yahoo.com", "Ana Maria Rodriguez", "02");
-insert into moderador values (4, "sebastian.ramirez@hotmail.com", "Sebastian Ramirez", "03");
-insert into moderador values (5, "lucia.moreno@outlook.com", "Lucia Moreno", "04");
+insert into moderador values (1, "martalopez@hotmail.com", "Marta Lopez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
+insert into moderador values (2, "alejandro.gutierrez@gmail.com", "Alejandro Guiterrez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
+insert into moderador values (3, "anamaria.rodriguez@yahoo.com", "Ana Maria Rodriguez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
+insert into moderador values (4, "sebastian.ramirez@hotmail.com", "Sebastian Ramirez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
+insert into moderador values (5, "lucia.moreno@outlook.com", "Lucia Moreno", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
 
 /* ----------------------------------------------PRODUCTO------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* PRODUCTO: CODIGO(PK), DESCRIPCION, DISPONIBILIDAD(ENUM), FECHA_LIMITE, NOMBRE, PRECIO, UNIDADES, MODERADOR_CODIGO, USUARIO_CODIGO */
@@ -69,21 +69,14 @@ insert into compra_producto values (3, 500000, 3, 3, 6);
 insert into compra_producto values (4, 800000, 1, 4, 7);
 insert into compra_producto values (5, 180000, 2, 5, 3);
 
-/* ----------------------------------------------CALIFICACION--------------------------------------------------------------------------------------------------------------------------------------------*/
-/* CALIFICACION: CODIGO(PK), CALIFICACION, PRODUCTO_CODIGO, USUARIO_CODIGO */
-insert into calificacion values (1, "Bueno", 3, 1);
-insert into calificacion values (2, "Excelente", 4, 2);
-insert into calificacion values (3, "Regular", 6, 3);
-insert into calificacion values (4, "Bueno", 7, 4);
-insert into calificacion values (5, "Malo", 3, 5);
 
 /* ----------------------------------------------COMENTARIO----------------------------------------------------------------------------------------------------------------------------------------------*/
-/* COMENTARIO: CODIGO(PK), DESCRIPCION, FECHA, PRODUCTO_CODIGO, USUARIO_CODIGO */
-insert into comentario values (1,"Comentario...", "2023-03-16", 3, 1);
-insert into comentario values (2,"Comentario...", "2023-03-17", 4, 2);
-insert into comentario values (3,"Comentario...", "2023-03-18", 6, 3);
-insert into comentario values (4,"Comentario...", "2023-03-19", 7, 4);
-insert into comentario values (5,"Comentario...", "2023-03-20", 7, 1);
+/* COMENTARIO: CODIGO(PK), CALIFICACION, DESCRIPCION, FECHA, PRODUCTO_CODIGO, USUARIO_CODIGO */
+insert into comentario values (1,'REGULAR', "Comentario...", "2023-03-16", 3, 1);
+insert into comentario values (2,'REGULAR', "Comentario...", "2023-03-17", 4, 2);
+insert into comentario values (3,'REGULAR', "Comentario...", "2023-03-18", 6, 3);
+insert into comentario values (4,'REGULAR', "Comentario...", "2023-03-19", 7, 4);
+insert into comentario values (5,'REGULAR', "Comentario...", "2023-03-20", 7, 1);
 
 /* ----------------------------------------------FORO---------------------------------------------------------------------------------------------------------------------------------------------------*/
 /* FORO: CODIGO(PK), COMENTARIOS, PRODUCTO_CODIGO, USUARIO_CODIGO */

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto.servicios.Implementacion;
 
+import co.edu.uniquindio.proyecto.dto.EmailDTO;
 import co.edu.uniquindio.proyecto.servicios.Interfaz.EmailServicio;
 import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ public class EmailServicioImpl implements EmailServicio
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public boolean enviarEmail (String asunto, String contenido, String destinatario)
+    public void enviarEmail (EmailDTO emailDTO)
     {
 
         MimeMessage mensaje = javaMailSender.createMimeMessage();
@@ -25,20 +26,18 @@ public class EmailServicioImpl implements EmailServicio
 
 
         try {
-            helper.setSubject(asunto);
-            helper.setText(contenido, true);
-            helper.setTo(destinatario);
+            helper.setSubject(emailDTO.getAsunto());
+            helper.setText(emailDTO.getCuerpo(), true);
+            helper.setTo(emailDTO.getDestinatario());
             helper.setFrom("no_reply@unicine.com");
 
             javaMailSender.send(mensaje);
 
-            return true;
+
         }catch (Exception e)
         {
             e.printStackTrace();
         }
-
-        return false;
     }
 
 }

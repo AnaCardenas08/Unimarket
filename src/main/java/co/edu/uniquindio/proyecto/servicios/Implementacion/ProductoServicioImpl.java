@@ -39,24 +39,19 @@ public class ProductoServicioImpl implements ProductoServicio
         producto.setImagen( productoDTO.getImagenes() );
         producto.setCategorias( productoDTO.getCategorias() );
 
+        //Amabas fechas se agregan?
+        //El estado al crearlo queda INACTIVO?
+
         return productoRepo.save( producto ).getCodigo();
     }
 
     @Override
-    public int actualizarProducto(int codigoProducto, ProductoDTO productoDTO)  throws Exception
+    public int actualizarProducto(int codigoProducto, ProductoGetDTO productoDTO)  throws Exception
     {
-        Producto buscado = productoRepo.buscarProducto(productoDTO.getCodigoUsuario());
-
-        if(buscado!=null)
-        {
-            throw new Exception("El usuario "+productoDTO.getCodigoUsuario()+" ya tiene creado este producto ");
-        }
-
         validarExiste(codigoProducto);
 
         Producto producto = convertir(productoDTO);
         producto.setCodigo(codigoProducto);
-
 
         return productoRepo.save( producto ).getCodigo();
     }
@@ -110,7 +105,7 @@ public class ProductoServicioImpl implements ProductoServicio
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario)  throws Exception
+    public List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario)
     {
         List<Producto> lista = productoRepo.listarProductosUsuario(codigoUsuario);
         List<ProductoGetDTO> respuesta = new ArrayList<>();
@@ -124,7 +119,7 @@ public class ProductoServicioImpl implements ProductoServicio
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosCategoria(Categoria categoria)  throws Exception
+    public List<ProductoGetDTO> listarProductosCategoria(Categoria categoria)
     {
         //usar member of para lista de element collections (son varios)
         List<Producto> lista = productoRepo.listarProductosCategoria(categoria);
@@ -139,7 +134,7 @@ public class ProductoServicioImpl implements ProductoServicio
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosPorEstado(Disponibilidad disponibilidad)  throws Exception
+    public List<ProductoGetDTO> listarProductosPorEstado(Disponibilidad disponibilidad)
     {
         // este es una lista de enum pero estamos mirando por uno solo no todos los datos de la lista (uno solo)
         List<Producto> lista = productoRepo.listarProductosEstado(disponibilidad);
@@ -154,7 +149,7 @@ public class ProductoServicioImpl implements ProductoServicio
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario)  throws Exception
+    public List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario)
     {
         List<Producto> lista = productoRepo.listarProductosFavoritos(codigoUsuario);
         List<ProductoGetDTO> respuesta = new ArrayList<>();
@@ -168,7 +163,7 @@ public class ProductoServicioImpl implements ProductoServicio
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosNombre(String nombre, Categoria categoria)  throws Exception
+    public List<ProductoGetDTO> listarProductosNombre(String nombre, Categoria categoria)
     {
         List<Producto> lista = productoRepo.listarProductosNombre(nombre, categoria);
         List<ProductoGetDTO> respuesta = new ArrayList<>();
@@ -182,7 +177,7 @@ public class ProductoServicioImpl implements ProductoServicio
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo)  throws Exception
+    public List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo)
     {
         List<Producto> lista = productoRepo.listarProductosPrecio(precioMinimo, precioMaximo);
         List<ProductoGetDTO> respuesta = new ArrayList<>();
@@ -226,7 +221,7 @@ public class ProductoServicioImpl implements ProductoServicio
 
     }
 
-    private Producto convertir(ProductoDTO productoDTO)
+    private Producto convertir(ProductoGetDTO productoDTO) throws Exception
     {
 
         Producto producto = new Producto();
@@ -234,9 +229,11 @@ public class ProductoServicioImpl implements ProductoServicio
         producto.setDescripcion( productoDTO.getDescripcion() );
         producto.setUnidades( productoDTO.getUnidades() );
         producto.setPrecio( productoDTO.getPrecio() );
-        producto.setCodigo( productoDTO.getCodigoUsuario() );
         producto.setImagen( productoDTO.getImagenes() );
         producto.setCategorias( productoDTO.getCategorias());
+        producto.setUsuario( usuarioServicio.obtener( productoDTO.getCodigoUsuario() ) );
+        producto.setFechaLimite( productoDTO.getFechaLimite() );
+        producto.setDisponibilidad( productoDTO.getDisponibilidad() );
 
         return producto;
     }
@@ -245,6 +242,7 @@ public class ProductoServicioImpl implements ProductoServicio
     {
 
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
+
                 producto.getCodigo(),
                 producto.getDisponibilidad(),
                 producto.getFechaLimite(),
@@ -273,8 +271,5 @@ public class ProductoServicioImpl implements ProductoServicio
 
         return producto.get();
     }
-
-
-
 
 }
