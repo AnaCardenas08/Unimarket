@@ -26,8 +26,8 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer>
     @Query("select p from Producto p join p.usuariosFavorito u where u.codigo = :codigoUsuario")
     List<Producto> listarProductosFavoritos(int codigoUsuario);
 
-    @Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' ) and :categoria member of p.categorias")
-    List<Producto> listarProductosNombre(String nombre, Categoria categoria);
+    @Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' )")
+    List<Producto> listarProductosNombre(String nombre);
 
     @Query("select p from Producto p where p.precio > :precioMinimo and p.precio < :precioMaximo")
     List<Producto> listarProductosPrecio(float precioMinimo, float precioMaximo);

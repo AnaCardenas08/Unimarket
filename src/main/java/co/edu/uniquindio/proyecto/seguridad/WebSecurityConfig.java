@@ -28,7 +28,11 @@ public class WebSecurityConfig
         {
             http.csrf().disable();
             http.cors();
-            http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated();
+            http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll();
+            http.authorizeHttpRequests().requestMatchers("/api/imagenes/**").permitAll();
+            http.authorizeHttpRequests().requestMatchers("/api/usuarios/**").permitAll();
+            http.authorizeHttpRequests().requestMatchers("/api/moderador/**").hasAuthority("MODERADOR").anyRequest().authenticated();
+           // http.authorizeHttpRequests().anyRequest().permitAll();
             http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             http.authenticationProvider(authenticationProvider);

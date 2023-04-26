@@ -2,29 +2,37 @@ package co.edu.uniquindio.proyecto.controlador;
 
 import co.edu.uniquindio.proyecto.dto.ComentarioDTO;
 import co.edu.uniquindio.proyecto.dto.ComentarioGetDTO;
+import co.edu.uniquindio.proyecto.dto.MensajeDTO;
 import co.edu.uniquindio.proyecto.entidades.Calificacion;
-import co.edu.uniquindio.proyecto.entidades.Comentario;
 import co.edu.uniquindio.proyecto.servicios.Interfaz.ComentarioServicio;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+//Diego Alejandro Lopez
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/comentarios")
 public class ComentarioControlador
 {
-
+    //Diego Alejandro Lopez
     private final ComentarioServicio comentarioServicio;
 
+    //Diego Alejandro Lopez
     @PostMapping("/crearComentario")
-    public int crearComentario( @Valid @RequestBody ComentarioDTO comentarioDTO) throws Exception
+    public ResponseEntity<MensajeDTO> crearComentario(@Valid @RequestBody ComentarioDTO comentario) throws Exception
     {
 
-        return comentarioServicio.crearComentario(comentarioDTO);
+        comentarioServicio.crearComentario(comentario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new MensajeDTO(HttpStatus.CREATED,
+                false, "Comentario publicado con exito"));
+
     }
 
+    //Diego Alejandro Lopez
     @GetMapping("/listarComentarios/{codigoProducto}")
     public List<ComentarioGetDTO> listarComentarios(@PathVariable int codigoProducto)
     {
@@ -32,6 +40,7 @@ public class ComentarioControlador
         return  comentarioServicio.listarComentarios(codigoProducto);
     }
 
+    //Diego Alejandro Lopez
     @PutMapping("/actualizarCalificacion/{codigoComentario}")
     public int actualizarCalificacion( @PathVariable int codigoComentario, @Valid @RequestBody Calificacion calificacion) throws Exception
     {
@@ -39,25 +48,15 @@ public class ComentarioControlador
         return comentarioServicio.actualizarCalificacion(codigoComentario,calificacion);
     }
 
-    @GetMapping("/obtener/{codigo}")
-    public Comentario obtener(@PathVariable int codigo) throws Exception
-    {
 
-        return comentarioServicio.obtener(codigo);
-    }
-
-    @PutMapping("/convertir")
-    public ComentarioGetDTO convertir(  @Valid @RequestBody Comentario comentario)
-    {
-
-        return comentarioServicio.convertir(comentario);
-    }
-
+    //Diego Alejandro Lopez
     @GetMapping("/obtenerComentario/{codigoComentario}\"")
-    public ComentarioGetDTO obtenerComentario( @PathVariable int codigoComentario)  throws Exception
+    public ResponseEntity<MensajeDTO> obtenerComentario( @PathVariable int codigoComentario)  throws Exception
     {
 
-        return comentarioServicio.obtenerComentario(codigoComentario);
+        return  ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,
+                comentarioServicio.obtenerComentario(codigoComentario)));
     }
+
 
 }

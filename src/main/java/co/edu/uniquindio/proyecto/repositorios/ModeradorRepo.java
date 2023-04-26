@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+//Pablo Andres Sanchez
 @Repository
 public interface ModeradorRepo extends JpaRepository<Moderador, Integer>
 {
-    @Query("select m from Moderador  m where m.email = :email and m.password=:password")
-    Moderador comprobarAutenticacion(String email, String password);
+    //Pablo Andres Sanchez
     Optional<Moderador> findByEmail(String email);
 
 }

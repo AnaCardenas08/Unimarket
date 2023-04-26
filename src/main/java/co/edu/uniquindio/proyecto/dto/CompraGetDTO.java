@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
+//Pablo Andres Sanchez
 @AllArgsConstructor
 @Getter
 @Setter
@@ -23,6 +24,6 @@ public class CompraGetDTO
 
     private MetodoPago metodoPago;
 
-    private List<DetalleCompraDTO> detalleCompraDTO;
+
 
 }

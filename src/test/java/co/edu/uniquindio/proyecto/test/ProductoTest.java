@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +32,9 @@ public class ProductoTest
     {
         try
         {
-            List<Imagen> listaImagenes = new ArrayList<>();
             List<Categoria> listaCategoria = new ArrayList<>();
 
-            ProductoDTO productoDTO = new ProductoDTO("Sombras", "Color Nude", 10, 15000, 1, listaImagenes, listaCategoria);
+            ProductoDTO productoDTO = new ProductoDTO("Sombras", "Color Nude", 10, 15000, 1, listaCategoria, Disponibilidad.INACTIVO);
 
             productoServicio.crearProducto(productoDTO);
 
@@ -188,7 +188,7 @@ public class ProductoTest
    @Sql("classpath:dataset.sql")
     public void listarProductosNombreTest() throws Exception
     {
-        List<ProductoGetDTO> productosNombre = productoServicio.listarProductosNombre("Camisa de Vestir", Categoria.ROPA);
+        List<ProductoGetDTO> productosNombre = productoServicio.listarProductosNombre("Camisa de Vestir");
         Assertions.assertEquals(1, productosNombre.size());
     }
 

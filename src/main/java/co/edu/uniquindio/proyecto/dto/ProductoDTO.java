@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto.dto;
 
 import co.edu.uniquindio.proyecto.entidades.Categoria;
+import co.edu.uniquindio.proyecto.entidades.Disponibilidad;
 import co.edu.uniquindio.proyecto.entidades.Imagen;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -10,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -37,7 +40,8 @@ public class ProductoDTO
     @Positive
     private int codigoUsuario;
 
-    private List<Imagen> imagenes;
-
     private List<Categoria> categorias;
+
+    private Disponibilidad disponibilidad;
+
 }

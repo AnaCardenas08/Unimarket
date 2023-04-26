@@ -16,7 +16,6 @@ public class EmailTest
 {
     @Autowired
     private EmailServicio emailServicio;
-    private UsuarioServicio usuarioServicio;
 
     @Test
     @Sql("classpath:dataset.sql")

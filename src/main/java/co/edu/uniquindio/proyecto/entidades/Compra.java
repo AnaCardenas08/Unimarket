@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -21,7 +22,7 @@ public class Compra implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
 
-    private LocalDate fechaCompra;
+    private LocalDateTime fechaCompra;
     private Double totalPago;
 
     @ManyToOne

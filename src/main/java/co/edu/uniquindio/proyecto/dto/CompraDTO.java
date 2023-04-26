@@ -7,13 +7,17 @@ import lombok.Setter;
 
 import java.util.List;
 
+//Pablo Andres Sanchez
 @AllArgsConstructor
 @Getter
 @Setter
 public class CompraDTO
 {
     private int codigoUsuario;
+
     private MetodoPago metodoPago;
-    private List<DetalleCompraDTO> detalleCompraDTO;
+
+    private double totalPago;
+
 
 }

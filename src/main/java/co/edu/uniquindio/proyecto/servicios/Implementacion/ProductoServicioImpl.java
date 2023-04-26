@@ -30,17 +30,18 @@ public class ProductoServicioImpl implements ProductoServicio
     public int crearProducto(ProductoDTO productoDTO)  throws Exception
     {
         Producto producto = new Producto();
+        LocalDateTime fecha = LocalDateTime.now();
 
         producto.setNombre( productoDTO.getNombre() );
         producto.setDescripcion( productoDTO.getDescripcion() );
         producto.setUnidades( productoDTO.getUnidades() );
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setUsuario( usuarioServicio.obtener( productoDTO.getCodigoUsuario() ) );
-        producto.setImagen( productoDTO.getImagenes() );
         producto.setCategorias( productoDTO.getCategorias() );
+        producto.setDisponibilidad(Disponibilidad.INACTIVO);
+        producto.setFechaLimite(fecha);
 
-        //Amabas fechas se agregan?
-        //El estado al crearlo queda INACTIVO?
+
 
         return productoRepo.save( producto ).getCodigo();
     }
@@ -163,9 +164,9 @@ public class ProductoServicioImpl implements ProductoServicio
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosNombre(String nombre, Categoria categoria)
+    public List<ProductoGetDTO> listarProductosNombre(String nombre)
     {
-        List<Producto> lista = productoRepo.listarProductosNombre(nombre, categoria);
+        List<Producto> lista = productoRepo.listarProductosNombre(nombre);
         List<ProductoGetDTO> respuesta = new ArrayList<>();
 
         for(Producto p : lista)

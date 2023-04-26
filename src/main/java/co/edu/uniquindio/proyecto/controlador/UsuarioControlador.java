@@ -1,9 +1,12 @@
 package co.edu.uniquindio.proyecto.controlador;
 
+import co.edu.uniquindio.proyecto.dto.MensajeDTO;
 import co.edu.uniquindio.proyecto.dto.UsuarioDTO;
 import co.edu.uniquindio.proyecto.dto.UsuarioGetDTO;
 import co.edu.uniquindio.proyecto.servicios.Interfaz.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,37 +16,30 @@ public class UsuarioControlador
 {
     private final UsuarioServicio usuarioServicio;
 
-    @PostMapping("/crearUsuario")
-   public  int crearUsuario(@RequestBody UsuarioDTO usuarioDTO)  throws Exception
+    @PostMapping("/crear")
+    public ResponseEntity<MensajeDTO> crearUsuario(@RequestBody  UsuarioDTO usuarioDTO)  throws Exception
     {
-        return usuarioServicio.crearUsuario(usuarioDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO(HttpStatus.CREATED, false,
+                usuarioServicio.crearUsuario(usuarioDTO)) );
     }
 
-    @PutMapping("/actualizarUsuario/{codigoUsuario}")
-    public int actualizarUsuario(@PathVariable int codigoUsuario, @RequestBody UsuarioDTO usuarioDTO) throws Exception
+    @PutMapping("/actualizar/{codigoUsuario}")
+    public ResponseEntity<MensajeDTO> actualizarUsuario(@PathVariable int codigoUsuario, @RequestBody UsuarioDTO usuarioDTO) throws Exception
     {
-        return usuarioServicio.actualizarUsuario(codigoUsuario,usuarioDTO);
-
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, usuarioServicio.actualizarUsuario(codigoUsuario, usuarioDTO)));
     }
 
-    @DeleteMapping("/eliminarUsuario/{codigoUsuario}")
-    public int eliminiarUsuario(@PathVariable int codigoUsuario) throws Exception
+    @DeleteMapping("/eliminar/{codigoUsuario}")
+    public ResponseEntity<MensajeDTO> eliminiarUsuario(@PathVariable int codigoUsuario) throws Exception
     {
-        return usuarioServicio.eliminiarUsuario(codigoUsuario);
-
+        usuarioServicio.eliminiarUsuario(codigoUsuario);
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, "Usuario eliminado correctamente") );
     }
 
-    @GetMapping("/obtenerUsuario/{codigoUsuario}")
-    UsuarioGetDTO obtenerUsuario(@PathVariable int codigoUsuario) throws Exception
+    @GetMapping("/obtener/{codigoUsuario}")
+    public ResponseEntity<MensajeDTO> obtenerUsuario(@PathVariable int codigoUsuario) throws Exception
     {
-        return usuarioServicio.obtenerUsuario(codigoUsuario);
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, usuarioServicio.obtenerUsuario(codigoUsuario)));
     }
 
-
-    @PostMapping("/cambiarPassword/{correo}") //Quedaria asi??
-    public boolean cambiarPassword(@PathVariable String correo, @PathVariable String passwordNueva ) throws Exception
-    {
-        return usuarioServicio.cambiarPassword(correo, passwordNueva);
-
-    }
 }

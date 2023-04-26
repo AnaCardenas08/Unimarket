@@ -52,7 +52,8 @@ public class ComentarioTest
     public void actualizarCalificacion()
     {
 
-        try{
+        try
+        {
 
             int comentarioCalificado = comentarioServicio.actualizarCalificacion(1,Calificacion.BUENO);
 

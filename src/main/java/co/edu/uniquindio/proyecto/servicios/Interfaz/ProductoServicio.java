@@ -35,7 +35,7 @@ public interface ProductoServicio
 
     List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario);
 
-    List<ProductoGetDTO> listarProductosNombre(String nombre, Categoria categoria);
+    List<ProductoGetDTO> listarProductosNombre(String nombre);
 
     List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo);
 
