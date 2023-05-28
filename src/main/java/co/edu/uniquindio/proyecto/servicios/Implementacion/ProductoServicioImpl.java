@@ -2,7 +2,6 @@ package co.edu.uniquindio.proyecto.servicios.Implementacion;
 
 import co.edu.uniquindio.proyecto.dto.ProductoDTO;
 import co.edu.uniquindio.proyecto.dto.ProductoGetDTO;
-import co.edu.uniquindio.proyecto.dto.UsuarioDTO;
 import co.edu.uniquindio.proyecto.entidades.Categoria;
 import co.edu.uniquindio.proyecto.entidades.Disponibilidad;
 import co.edu.uniquindio.proyecto.entidades.Producto;
@@ -13,7 +12,6 @@ import co.edu.uniquindio.proyecto.servicios.Interfaz.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -190,6 +188,33 @@ public class ProductoServicioImpl implements ProductoServicio
 
         return respuesta;
     }
+
+    @Override
+    public List<ProductoGetDTO> obtenerProductoMinMax(Categoria categoria)  throws Exception
+    {
+        List<ProductoGetDTO> lista = new ArrayList<>();
+        lista.add(convertir(productoRepo.obtenerProductoMin(categoria)));
+        lista.add(convertir(productoRepo.obtenerProductoMax(categoria)));
+
+        return lista;
+    }
+
+    //actividad en clase
+    @Override
+    public List<List<Object>> countByCategory ()
+    {
+        List<List<Object>> categoryCounts = new ArrayList<>();
+        List<List<Object>> results = productoRepo.countByCategory();
+
+        for (List<Object> result : results)
+        {
+            categoryCounts.add(result);
+        }
+
+        return categoryCounts;
+    }
+
+
 
     @Override
     public void crearFavorito(int codigoUsuario, int codigoProducto) throws Exception

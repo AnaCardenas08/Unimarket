@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,11 +32,13 @@ public class ComentarioServicioImpl implements ComentarioServicio
     public int crearComentario(ComentarioDTO comentarioDTO) throws Exception
     {
         Comentario comentario = new Comentario();
+        LocalDate fecha = LocalDate.now();
 
         comentario.setDescripcion(comentarioDTO.getMensaje());
         comentario.setUsuario( usuarioServicio.obtener( comentarioDTO.getCodigoUsuario()) );
         comentario.setProducto(productoServicio.obtener(comentarioDTO.getCodigoProducto()));
         comentario.setCalificacion(comentarioDTO.getCalificacion());
+        comentario.setFecha(fecha);
 
         return comentarioRepo.save( comentario ).getCodigo();
     }

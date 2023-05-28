@@ -31,7 +31,8 @@ public class WebSecurityConfig
             http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll();
             http.authorizeHttpRequests().requestMatchers("/api/imagenes/**").permitAll();
             http.authorizeHttpRequests().requestMatchers("/api/usuarios/**").permitAll();
-            http.authorizeHttpRequests().requestMatchers("/api/moderador/**").hasAuthority("MODERADOR").anyRequest().authenticated();
+            http.authorizeHttpRequests().requestMatchers("/api/comentarios/**").permitAll();
+            http.authorizeHttpRequests().requestMatchers("/api/moderador/**").permitAll();
            // http.authorizeHttpRequests().anyRequest().permitAll();
             http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

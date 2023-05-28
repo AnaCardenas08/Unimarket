@@ -40,7 +40,7 @@ public class CompraTest
     {
         try {
 
-            CompraDTO usuarioDTO = new CompraDTO( 5, MetodoPago.TARJETA_CREDITO);
+            CompraDTO usuarioDTO = new CompraDTO( 5, MetodoPago.TARJETA_CREDITO, 200.000);
             compraServicio.crearCompra(usuarioDTO);
 
             Assertions.assertNotNull(usuarioDTO);
@@ -52,23 +52,7 @@ public class CompraTest
             throw new RuntimeException(e);
         }
     }
-    //Pablo Andres Sanchez
-    //    @Test
-//    @Sql("classpath:dataset.sql")
-//    public void crearCompraTest()
-//    {
-//
-//        try {
-//
-//            CompraDTO usuarioDTO = new CompraDTO(6, 5, MetodoPago.TARJETA_CREDITO);
-//            compraServicio.crearCompra(usuarioDTO);
-//
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//
-//    }
+
 
     //Pablo Andres Sanchez
     @Test

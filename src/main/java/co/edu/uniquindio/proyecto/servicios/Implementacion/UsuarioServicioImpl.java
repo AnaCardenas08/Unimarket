@@ -82,10 +82,10 @@ public class UsuarioServicioImpl implements UsuarioServicio
         return usuario.get();
     }
 
-    public void enviarLinkRecuperacion(String correo) throws Exception
-    {
-        emailServicio.enviarEmail(new EmailDTO("Recuperacion password", "Para recupear la contraseña ingrese a: []", correo) );
-    }
+//    public void enviarLinkRecuperacion(String correo) throws Exception
+//    {
+//        emailServicio.enviarEmail(new EmailDTO("Recuperacion password", "Para recupear la contraseña ingrese a: []", correo) );
+//    }
 
     @Override
 

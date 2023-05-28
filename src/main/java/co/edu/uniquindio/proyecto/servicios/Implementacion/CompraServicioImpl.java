@@ -8,6 +8,9 @@ import co.edu.uniquindio.proyecto.servicios.Interfaz.CompraServicio;
 import co.edu.uniquindio.proyecto.servicios.Interfaz.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -26,28 +29,16 @@ public class CompraServicioImpl implements CompraServicio
     public int crearCompra(CompraDTO compraDTO)  throws Exception
     {
         Compra compra = new Compra();
+        LocalDateTime fecha = LocalDateTime.now();
 
         compra.setUsuario( usuarioServicio.obtener( compraDTO.getCodigoUsuario()));
         compra.setMetodoPago( compraDTO.getMetodoPago());
         compra.setTotalPago(compraDTO.getTotalPago());
+        compra.setFechaCompra(fecha);
 
         return compraRepo.save( compra ).getCodigo();
     }
 
-//    @Override
-//    public int crearCompra(CompraDTO compraDTO) throws Exception
-//    {
-//
-//        Compra buscado = compraRepo.buscarCompra(compraDTO.getCodigoCompra());
-//
-//        if(buscado!=null)
-//        {
-//            throw new Exception("El codigo "+compraDTO.getCodigoCompra()+" ya está en uso");
-//        }
-//
-//        Compra usuario = convertir(compraDTO);
-//        return compraRepo.save( usuario ).getCodigo();
-//    }
 
     //Pablo Andres Sanchez
     @Override
@@ -65,21 +56,7 @@ public class CompraServicioImpl implements CompraServicio
 
     }
 
-
-
-    // ------------ OBTENER COMPRA VERSION PABLO ------
-
-//    @Override
-//    public Compra obtenerCompra(int codigoCompra) throws Exception {
-//
-//        Compra compra = compraRepo.buscarCompra(codigoCompra);
-//
-//        if(compra == null) throw new Exception("La compra no existe");
-//
-//          return compra;
-//
-//
-//    }
+    
 
     //Pablo Andres Sanchez
     @Override

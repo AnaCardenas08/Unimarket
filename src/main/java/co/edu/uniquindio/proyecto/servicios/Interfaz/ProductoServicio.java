@@ -19,6 +19,11 @@ public interface ProductoServicio
 
     int eliminarProducto(int codigoProducto) throws Exception;
 
+    //actividad en clase
+    List<ProductoGetDTO> obtenerProductoMinMax(Categoria categoria)  throws Exception;
+    //actividad en clase
+    List<List<Object>> countByCategory();
+
     void crearFavorito(int codigoUsuario, int codigoProducto)throws Exception;
 
     void eliminarFavorito(int codigoUsuario, int codigoProducto)throws Exception;

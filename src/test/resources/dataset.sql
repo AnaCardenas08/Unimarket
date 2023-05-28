@@ -10,7 +10,7 @@ insert into usuario values (5, "amorales@outlook.com", "Andres Morales", "$2a$10
 /* MODERADOR: CODIGO(PK), CORREO, NOMBRE, PASSWORD */
 insert into moderador values (1, "martalopez@hotmail.com", "Marta Lopez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
 insert into moderador values (2, "alejandro.gutierrez@gmail.com", "Alejandro Guiterrez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
-insert into moderador values (3, "anamaria.rodriguez@yahoo.com", "Ana Maria Rodriguez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
+insert into moderador values (3, "anamaria.rodriguez@yahoo.com", "Ana Maria Rodriguez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");9
 insert into moderador values (4, "sebastian.ramirez@hotmail.com", "Sebastian Ramirez", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
 insert into moderador values (5, "lucia.moreno@outlook.com", "Lucia Moreno", "$2a$10$2TUT4Y9qcnhdiLkA5o3lQ.K/LOMQZdjO3CLRtDjqgJ1tLpKoFPz0a");
 

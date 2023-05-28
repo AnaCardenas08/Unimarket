@@ -18,10 +18,10 @@ public class CloudinaryServicioImpl implements CloudinaryServicio
 
     public CloudinaryServicioImpl()
     {
-        Map<String, String> config = new HashMap<>();
-        config.put("cloud_name", "SU_CLOUD_NAME");
-        config.put("api_key", "SU_API_KEY");
-        config.put("api_secret", "SU_API_SECRET");
+        Map config = new HashMap();
+        config.put("cloud_name", "dijgrfdlm");
+        config.put("api_key", "257326668371462");
+        config.put("api_secret", "VBxmVA5lvEaWaJnGc61UUKfbV2c");
         cloudinary = new Cloudinary(config);
     }
     @Override

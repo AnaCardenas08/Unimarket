@@ -41,16 +41,17 @@ public class ComentarioControlador
     }
 
     //Diego Alejandro Lopez
-    @PutMapping("/actualizarCalificacion/{codigoComentario}")
-    public int actualizarCalificacion( @PathVariable int codigoComentario, @Valid @RequestBody Calificacion calificacion) throws Exception
+    @PutMapping("/actualizarCalificacion/{codigoComentario}/{calificacion}")
+    public ResponseEntity<MensajeDTO> actualizarCalificacion( @PathVariable int codigoComentario, @PathVariable Calificacion calificacion) throws Exception
     {
 
-        return comentarioServicio.actualizarCalificacion(codigoComentario,calificacion);
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,
+                comentarioServicio.actualizarCalificacion(codigoComentario,calificacion)));
     }
 
 
     //Diego Alejandro Lopez
-    @GetMapping("/obtenerComentario/{codigoComentario}\"")
+    @GetMapping("/obtenerComentario/{codigoComentario}")
     public ResponseEntity<MensajeDTO> obtenerComentario( @PathVariable int codigoComentario)  throws Exception
     {
 

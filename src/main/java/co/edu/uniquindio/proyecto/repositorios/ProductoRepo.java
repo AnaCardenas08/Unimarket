@@ -32,5 +32,15 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer>
     @Query("select p from Producto p where p.precio > :precioMinimo and p.precio < :precioMaximo")
     List<Producto> listarProductosPrecio(float precioMinimo, float precioMaximo);
 
+    //actividad en clase
+    @Query("select p2 from Producto p2 where p2.precio = (select min(p.precio) from Producto p where :categoria member of p.categorias )")
+    Producto obtenerProductoMin(Categoria categoria);
 
+    //actividad en clase
+    @Query("select p2 from Producto p2 where p2.precio = (select max (p.precio) from Producto p where :categoria member of p.categorias )")
+    Producto obtenerProductoMax(Categoria categoria);
+
+    //actividad en clase
+    @Query("select p.categorias, count(p) from Producto p GROUP BY p.categorias")
+    List<List<Object>> countByCategory();
 }

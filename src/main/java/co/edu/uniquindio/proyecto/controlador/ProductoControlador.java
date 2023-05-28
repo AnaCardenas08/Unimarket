@@ -48,8 +48,8 @@ public class ProductoControlador
 
     }
 
-    @PutMapping("/actualizarProductoDis/{codigoProducto}")
-    public ResponseEntity<MensajeDTO> actualizarEstado(@PathVariable int codigoProducto, @Valid @RequestBody Disponibilidad disponibilidad) throws Exception
+    @PutMapping("/actualizarProductoDis/{codigoProducto}/{disponibilidad}")
+    public ResponseEntity<MensajeDTO> actualizarEstado(@PathVariable int codigoProducto, @PathVariable Disponibilidad disponibilidad) throws Exception
     {
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.actualizarEstado(codigoProducto,disponibilidad)));
     }
@@ -84,8 +84,8 @@ public class ProductoControlador
         return productoServicio.listarProductosUsuario(codigoUsuario);
     }
 
-    @GetMapping("/obtenerProductosCategoria/")
-    List<ProductoGetDTO> listarProductosCategoria( @Valid @RequestBody Categoria categoria)
+    @GetMapping("/obtenerProductosCategoria/{categoria}")
+    List<ProductoGetDTO> listarProductosCategoria( @Valid @PathVariable Categoria categoria)
     {
         return productoServicio.listarProductosCategoria(categoria);
     }
@@ -113,5 +113,20 @@ public class ProductoControlador
     {
         return productoServicio.listarProductosPrecio(precioMinimo,precioMaximo);
     }
+
+    //actividad de clase
+    @GetMapping("/obtenerProductoMinMax/{categoria}")
+    List<ProductoGetDTO> obtenerProductoMinMax(@PathVariable Categoria categoria) throws Exception
+    {
+        return productoServicio.obtenerProductoMinMax(categoria);
+    }
+
+    //actividad de clase
+    @GetMapping("/countByCategoria/")
+    List<List<Object>> countByCategoria()
+    {
+        return productoServicio.countByCategory();
+    }
+
 
 }
